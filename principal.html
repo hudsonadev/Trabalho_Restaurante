@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante do Kyldão</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+      <img src="logo_rest.png" alt="Logo Restaurante">
+    </header>
+    
+    <main>
+        <h2>Cadastro e Reservas</h2>
+        <a href="reservas.html"><button id="reserva">Faça sua reserva</button></a>
+        <a href="cadastro.html"><button id="cadastro">Faça seu Cadastro</button></a>
+        
+        <section id="pedidos">
+            <h2>Fazer Pedido</h2>
+            <div id="menu">
+                <h3>Menu:</h3>
+                <ul>
+                  <h4>Prato principal</h4>
+                    <li>Feijoada 1x - R$ 10,00 <button onclick="adicionarItem('Feijoada', 10)">Adicionar</button></li>
+                    <li>Costela com mandioca 1x - R$ 16,00 <button onclick="adicionarItem('Costela com mandioca', 16)">Adicionar</button></li>
+                    <li>Baião de dois 1x - R$ 21,00 <button onclick="adicionarItem('Baião de dois', 21)">Adicionar</button></li>
+                    <li>Moqueca de peixe 1x - R$ 37,90 <button onclick="adicionarItem('Moqueca de peixe', 37.90)">Adicionar</button></li>
+                    <li>Pato no tucupi 1x - R$ 59,90 <button onclick="adicionarItem('Pato no tucupi', 59.90)">Adicionar</button></li>
+                </ul>
+                <ul>
+                  <h4>Bebidas</h4>
+                  <li>Guaraná 1L 1x - R$ 5,00 <button onclick="adicionarItem('Guaraná 1L', 5)">Adicionar</button></li>
+                  <li>Suco de maracujá natural 1L 1x - R$ 5,00 <button onclick="adicionarItem('Suco de maracujá', 5)">Adicionar</button></li>
+                  <li>Coca Cola 2L 1x - R$ 12,00 <button onclick="adicionarItem('Coca cola 2L', 12)">Adicionar</button></li>
+                  <li>Diaba loira 700ML 1x - R$ 21,00 <button onclick="adicionarItem('Diaba loira', 21)">Adicionar</button></li>
+                </ul>
+                <ul>
+                  <h4>Sobremesas</h4>
+                  <li>Brigadeiro gourmet 1x - R$ 5,00 <button onclick="adicionarItem('Brigadeiro gourmet', 5)">Adicionar</button></li>
+                  <li>Coxinha de frango cremosa 1x - 5,00 <button onclick="adicionarItem('Coxinha de frango cremosa', 5)">Adicionar</button></li>
+                  <li>Petit gateau 1x- R$ 7,00 <button onclick="adicionarItem('Petit gateau', 7)">Adicionar</button></li>
+                  <li>Cheesecake de nozes 1x - R$ 12,00 <button onclick="adicionarItem('Cheesecake de nozes', 12)">Adicionar</button></li>
+                </ul>
+            </div>
+
+            <div>
+              <h4>Incluir entrega? - R$ 5,00<button onclick="adicionarItem('Entrega', 5)">Incluir</button>
+              </h4>
+            </div>
+            
+            <div id="resumoPedido">
+                <h3>Resumo do Pedido</h3>
+                <ul id="itensPedido"></ul>
+                <p>Total: R$ <span id="totalPedido">0.00</span></p>
+                <button onclick="confirmarPedido()">Confirmar Pedido</button>
+                <button onclick="cancelarPedido()">Cancelar Pedido</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

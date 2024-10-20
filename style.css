@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background-color: #eeeeee;
+}
+
+img{
+  width: 100%;
+}
+
+header {
+    background-color: #ffebc5;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: black;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    margin: 10px;
+}
+
+form input {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#basico, #premium{
+  width: 50px;
+}
+button {
+    padding: 10px;
+    margin: 15px;
+    background-color: dimgray;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: black;
+}
+
+#reserva, #cadastro {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+#reserva:hover,#cadastro:hover{
+  background-color: red;
+}
+#menu ul, #resumoPedido ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#menu li {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
