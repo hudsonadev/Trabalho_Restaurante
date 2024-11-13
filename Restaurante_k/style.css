@@ -70,3 +70,15 @@ button:hover {
     justify-content: space-between;
     align-items: center;
 }
+
+footer{
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+
+footer>p>a{
+  text-decoration: underline;
+  color: yellow;
+}
