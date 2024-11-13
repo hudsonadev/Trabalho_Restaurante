@@ -1,13 +1,17 @@
 var total = 0;
 var itens = [];
 var totalitens = 0;
+var clientes = []; // Armazena os clientes cadastrados
+var reservas = []; // Armazena as reservas feitas
 
+// Função para adicionar itens ao pedido
 function adicionarItem(descricao, preco) {
     itens.push({ descricao, preco });
     atualizarResumoPedido();
-    totalitens = totalitens+1;
+    totalitens = totalitens + 1;
 }
 
+// Atualizar o resumo do pedido
 function atualizarResumoPedido() {
     const lista = document.getElementById('itensPedido');
     lista.innerHTML = '';
@@ -23,22 +27,26 @@ function atualizarResumoPedido() {
     document.getElementById('totalPedido').innerText = total.toFixed(2);
 }
 
+// Remover item do pedido
 function removerItem(index) {
     itens.splice(index, 1);
     atualizarResumoPedido();
 }
 
+// Confirmar pedido
 function confirmarPedido() {
     alert("Pedido confirmado! Total: R$ " + total.toFixed(2) +  " Total de itens: " +  totalitens);
     itens = [];
     atualizarResumoPedido();
 }
 
+// Cancelar pedido
 function cancelarPedido() {
     itens = [];
     atualizarResumoPedido();
 }
 
+// Função para reservar mesa com verificação
 function reservarMesa() {
     var nome = document.getElementById('nome').value;
     var nmesa = parseInt(document.getElementById('numeromesa').value);
@@ -63,7 +71,6 @@ function reservarMesa() {
             return;
         }
 
-        // Verificar se data e hora da reserva sao anteriores a que nós reservou
         var dataHoraReserva = new Date(`${data}T${hora}`);
         var dataHoraAtual = new Date();
         
@@ -72,6 +79,17 @@ function reservarMesa() {
             return;
         }
 
+        // Verifica se a mesa já está reservada no mesmo horário
+        var reservaExistente = reservas.find(reserva =>
+            reserva.nmesa === nmesa && reserva.data === data && reserva.hora === hora
+        );
+
+        if (reservaExistente) {
+            alert(`A mesa ${nmesa} já está reservada para o horário ${hora} no dia ${data}.`);
+            return;
+        }
+
+        reservas.push({ nome, nmesa, capacidade, data, hora, status });
         alert(`Mesa ${nmesa}, ${status} reservada para ${nome} em ${data} às ${hora} para ${capacidade} pessoas.`);
         document.getElementById('reservaForm').reset();
     } else {
@@ -79,7 +97,7 @@ function reservarMesa() {
     }
 }
 
-
+// Cadastrar cliente e verificar CPF
 function cadastrarCliente() {
     var nome = document.getElementById('nome').value;
     var telefone = document.getElementById('telefone').value;
@@ -87,23 +105,29 @@ function cadastrarCliente() {
     var cpf = document.getElementById('cpf').value;
 
     if (nome && telefone && email && cpf) {
-        // Verificar 11 dígitos cpf e telefone
         if (cpf.length !== 11 || isNaN(cpf)) {
             alert("O CPF deve conter exatamente 11 dígitos numéricos.");
             return;
         }
-        
+
         if (telefone.length !== 11 || isNaN(telefone)) {
             alert("O telefone deve conter exatamente 11 dígitos numéricos.");
             return;
         }
 
-        // Verificar se email termina com @gmail.com
         if (!email.endsWith("@gmail.com")) {
             alert("O email deve ser um endereço @gmail.com.");
             return;
         }
 
+        // Verificar se o CPF já tá cadastrado
+        var clienteExistente = clientes.find(cliente => cliente.cpf === cpf);
+        if (clienteExistente) {
+            alert("Este CPF já está cadastrado.");
+            return;
+        }
+
+        clientes.push({ nome, telefone, email, cpf });
         alert(`Cadastro bem sucedido, bem-vindo(a) ${nome}!`);
         document.getElementById('cadastroForm').reset();
     } else {
